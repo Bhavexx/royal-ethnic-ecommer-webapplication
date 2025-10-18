@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 200" role="img" aria-labelledby="title desc">
+  <title id="title">Royal Royal Ethnic — Premium Logo</title>
+  <desc id="desc">Intricate gold crown with monogram and elegant wordmark for Royal Royal Ethnic</desc>
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF7CF"/>
+      <stop offset="35%" stop-color="#F0D678"/>
+      <stop offset="65%" stop-color="#C9A227"/>
+      <stop offset="100%" stop-color="#8C6A12"/>
+    </linearGradient>
+    <linearGradient id="goldStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F4E3A1"/>
+      <stop offset="50%" stop-color="#C9A227"/>
+      <stop offset="100%" stop-color="#9C7B16"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .word { font-family: 'Playfair Display', serif; font-weight: 700; fill: #0B0B0B; letter-spacing: .5px }
+      .sub { font-family: 'Inter', system-ui, sans-serif; fill: #6B7280 }
+    </style>
+  </defs>
+
+  <!-- Crown + Monogram -->
+  <g transform="translate(40,32)">
+    <!-- base ribbon -->
+    <path d="M0 120 L260 120 C270 120 274 110 266 106 L220 82 L188 100 L160 80 L128 100 L96 82 L64 100 L34 82 L0 100 Z" fill="url(#gold)" filter="url(#glow)"/>
+    <!-- spikes -->
+    <path d="M10 96 L42 44 L74 96 L106 36 L138 96 L170 48 L202 96 L232 56 L262 96" fill="none" stroke="url(#goldStroke)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- jewels -->
+    <circle cx="42" cy="44" r="6" fill="url(#gold)"/>
+    <circle cx="106" cy="36" r="6" fill="url(#gold)"/>
+    <circle cx="170" cy="48" r="6" fill="url(#gold)"/>
+    <circle cx="232" cy="56" r="6" fill="url(#gold)"/>
+    <!-- monogram badge -->
+    <g transform="translate(120,116)">
+      <ellipse cx="16" cy="16" rx="24" ry="16" fill="none" stroke="url(#goldStroke)" stroke-width="2"/>
+      <text x="16" y="21" text-anchor="middle" font-family="Playfair Display" font-weight="700" font-size="18" fill="#0B0B0B">RRE</text>
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(340,88)">
+    <text class="word" font-size="46">Royal Royal Ethnic</text>
+    <text class="sub" y="34" x="2" font-size="16">Where Tradition Meets Trend</text>
+  </g>
+</svg>

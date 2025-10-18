@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Brand palette (HSL) */
+    --brand-black: 0 0% 4%;              /* #0B0B0B */
+    --brand-gold-600: 43 64% 47%;        /* #C9A227 approx */
+    --brand-gold-500: 43 70% 55%;
+    --brand-gold-400: 43 80% 70%;
+    --ivory: 0 0% 98%;                   /* #FAFAFA */
+    --slate: 220 6% 56%;                 /* #6B7280 approx */
+    --success: 142 72% 36%;              /* #16A34A */
+    --error: 0 72% 52%;                  /* #DC2626 */
+
+    /* App semantics */
+    --background: var(--ivory);
+    --foreground: 222.2 84% 4.9%;
+
+    --card: var(--ivory);
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: var(--ivory);
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: var(--brand-gold-600);
+    --primary-foreground: var(--brand-black);
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: var(--error);
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.6rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: var(--brand-gold-600);
+    --sidebar-primary-foreground: var(--brand-black);
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Gradients & shadows */
+    --gradient-gold: linear-gradient(135deg, hsl(var(--brand-gold-500)), hsl(var(--brand-gold-600)) 60%, hsl(var(--brand-gold-400)) 100%);
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--brand-gold-600) / 0.25);
+    --shadow-glow: 0 0 40px hsl(var(--brand-gold-400) / 0.35);
+  }
+
+  .dark {
+    --background: var(--brand-black);
+    --foreground: 210 40% 98%;
+
+    --card: var(--brand-black);
+    --card-foreground: 210 40% 98%;
+
+    --popover: var(--brand-black);
+    --popover-foreground: 210 40% 98%;
+
+    --primary: var(--brand-gold-500);
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: var(--brand-gold-500);
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground font-inter antialiased; }
+
+  /* Interactive utilities */
+  .story-link {
+    position: relative; display: inline-block;
+  }
+  .story-link::after {
+    content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%;
+    background: hsl(var(--primary)); transform: scaleX(0); transform-origin: bottom right;
+    transition: transform .3s ease;
+  }
+  .story-link:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+
+  .hover-scale { transition: transform .2s ease; }
+  .hover-scale:hover { transform: scale(1.03); }
+}
