@@ -9,6 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/context/CartContext";
 import { CreditCard, Smartphone, Truck, CheckCircle } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 type PaymentMethod = "card" | "online" | "cod";
 type PaymentStep = "method" | "details" | "success";
@@ -59,18 +60,47 @@ export default function Payment() {
     return true;
   };
 
-  const processPayment = () => {
+  const processPayment = async () => {
     if (!validateForm()) return;
 
-    // Simulate payment processing
-    setTimeout(() => {
+    try {
+      const orderItems = items.map(item => ({
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        qty: item.qty,
+        size: item.size,
+        color: item.color
+      }));
+
+      // Insert into Supabase
+      const { error } = await supabase.from('orders' as any).insert({
+        customer_name: formData.name,
+        customer_email: formData.email,
+        customer_phone: formData.phone,
+        shipping_address: formData.address,
+        payment_method: paymentMethod,
+        total_amount: subtotal,
+        items: orderItems,
+        status: 'pending'
+      });
+
+      if (error) {
+        console.error("Supabase error:", error);
+        toast({ title: "Order Failed", description: "Failed to save order to database.", variant: "destructive" });
+        return;
+      }
+
       setStep("success");
       clear();
       toast({ 
         title: "Payment Successful!", 
         description: "Your order has been placed successfully.",
       });
-    }, 2000);
+    } catch (err) {
+      console.error(err);
+      toast({ title: "Error", description: "Something went wrong.", variant: "destructive" });
+    }
   };
 
   if (items.length === 0 && step !== "success") {
